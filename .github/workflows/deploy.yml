@@ -20,21 +20,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Check for pre-built artifacts
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        id: check_dist
+        run: test -d test/dist && echo "dist_exists=true" >> $GITHUB_OUTPUT || echo "dist_exists=false" >> $GITHUB_OUTPUT
+
+      - name: Setup Node.js (only if dist not found)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.check_dist.outputs.dist_exists == 'false'
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'npm'
           cache-dependency-path: 'test/package-lock.json'
 
-      - name: Install dependencies
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: Install dependencies (only if dist not found)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.check_dist.outputs.dist_exists == 'false'
         working-directory: test
         run: npm ci
 
-      - name: Build project
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: Build project (only if dist not found)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.check_dist.outputs.dist_exists == 'false'
         working-directory: test
         run: npm run build
 
