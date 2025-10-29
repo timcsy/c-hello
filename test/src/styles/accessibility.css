@@ -1,0 +1,294 @@
+/* 無障礙支持 - WCAG 2.1 AA 標準 */
+
+/* 鍵盤導航 */
+:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* 跳過鏈接 (如需) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* 高對比度模式 */
+@media (prefers-contrast: more) {
+  .header h1 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .tab-btn.active {
+    border-bottom-width: 4px;
+  }
+
+  .display-content {
+    border-width: 3px;
+  }
+
+  .param-input {
+    background: #999;
+    border: 1px solid #333;
+  }
+
+  .btn {
+    border: 2px solid #333;
+  }
+}
+
+/* 減少動畫 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .visual-feedback {
+    transition: none;
+  }
+
+  .tab-btn {
+    transition: none;
+  }
+
+  .input-area {
+    transition: none;
+  }
+}
+
+/* 放大文字 (滿足 WCAG 要求) */
+@media (min-width: 1200px) {
+  body {
+    font-size: 16px;
+  }
+
+  .header h1 {
+    font-size: 2.5em;
+  }
+}
+
+/* 確保按鈕最小尺寸 (44x44px) */
+button,
+input[type='checkbox'],
+input[type='radio'],
+.param-input {
+  min-height: 44px;
+}
+
+button {
+  min-width: 44px;
+}
+
+/* 文字大小縮放 */
+@supports (font-size: clamp(1rem, 1vw, 2rem)) {
+  .header h1 {
+    font-size: clamp(1.5em, 4vw, 2.5em);
+  }
+
+  .tab-btn {
+    font-size: clamp(0.9em, 2vw, 1em);
+  }
+
+  .display-content {
+    font-size: clamp(1em, 3vw, 1.2em);
+  }
+
+  .challenge-char {
+    font-size: clamp(1.5em, 8vw, 3em);
+  }
+}
+
+/* ARIA 隱藏元素 */
+[aria-hidden='true'] {
+  display: none;
+}
+
+/* 縮放支援 (用戶可放大至 200%) */
+html {
+  zoom: 100%;
+}
+
+/* 確保文字可讀性 */
+body {
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+p,
+label {
+  max-width: 85ch;
+}
+
+/* 列表樣式改進 */
+ul,
+ol {
+  list-style-position: inside;
+  margin-left: 0;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+/* 連結樣式 */
+a {
+  color: #667eea;
+  text-decoration: underline;
+  transition: all 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: #764ba2;
+  text-decoration: none;
+}
+
+/* 表單元素標籤 */
+label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 必填欄位指示 */
+.required::after {
+  content: ' *';
+  color: #f44336;
+}
+
+/* 錯誤訊息 */
+.error {
+  color: #f44336;
+  font-weight: 600;
+  margin-top: 0.5em;
+}
+
+.error-input {
+  border-color: #f44336 !important;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+/* 成功訊息 */
+.success {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+/* 警告訊息 */
+.warning {
+  color: #ff9800;
+  font-weight: 600;
+}
+
+/* 資訊訊息 */
+.info {
+  color: #2196f3;
+  font-weight: 600;
+}
+
+/* 焦點可見 (對所有互動元素) */
+.input-area:focus-visible,
+.tab-btn:focus-visible,
+.param-input:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+}
+
+/* 觸控目標最小尺寸 */
+button,
+input[type='button'],
+input[type='submit'],
+a {
+  min-width: 44px;
+  min-height: 44px;
+  padding: max(0.5em, (44px - 1em) / 2);
+}
+
+/* 確保顏色不是唯一的區分方式 */
+.correct::before {
+  content: '✓ ';
+  margin-right: 0.5em;
+}
+
+.incorrect::before {
+  content: '✗ ';
+  margin-right: 0.5em;
+}
+
+/* 字型 - 無襯線並易於閱讀 */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* 表格支援 (如未來需要) */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  padding: 0.75em;
+  background: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+}
+
+td {
+  padding: 0.75em;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 列表標記樣式 */
+ul {
+  list-style-type: disc;
+  margin-left: 1.5em;
+}
+
+ol {
+  list-style-type: decimal;
+  margin-left: 1.5em;
+}
+
+/* 引用塊 */
+blockquote {
+  border-left: 4px solid #667eea;
+  padding-left: 1em;
+  margin: 1em 0;
+  color: #666;
+}
+
+/* 代碼塊 */
+code,
+pre {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: 'Courier New', monospace;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1em;
+}
+
+/* 視覺分隔符 */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ddd, transparent);
+  margin: 2em 0;
+}

@@ -1,0 +1,331 @@
+/* 響應式設計 - 行動設備最佳化 */
+
+/* 平板 (768px - 1024px) */
+@media (max-width: 1024px) {
+  .header h1 {
+    font-size: 2em;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .display-section {
+    grid-template-columns: 1fr;
+  }
+
+  .params-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 小平板與大手機 (480px - 768px) */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .header {
+    padding: 30px 15px;
+  }
+
+  .header h1 {
+    font-size: 1.8em;
+  }
+
+  .header .subtitle {
+    font-size: 1em;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tab-btn {
+    border-bottom: none;
+    border-left: 3px solid transparent;
+  }
+
+  .tab-btn.active {
+    border-left-color: #667eea;
+  }
+
+  .main-content {
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .input-area {
+    padding: 40px 20px;
+  }
+
+  .display-section {
+    gap: 15px;
+  }
+
+  .params-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .challenge-char {
+    font-size: 2.5em;
+  }
+}
+
+/* 手機 (< 480px) */
+@media (max-width: 480px) {
+  .container {
+    border-radius: 0;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  .header {
+    padding: 20px 15px;
+  }
+
+  .header h1 {
+    font-size: 1.5em;
+  }
+
+  .header .subtitle {
+    font-size: 0.9em;
+  }
+
+  .main-content {
+    padding: 12px;
+    gap: 15px;
+  }
+
+  .input-area {
+    padding: 30px 15px;
+    font-size: 0.95em;
+  }
+
+  .visual-feedback {
+    width: 50px;
+    height: 50px;
+  }
+
+  .display-item label {
+    font-size: 0.85em;
+  }
+
+  .display-content {
+    font-size: 1em;
+    padding: 15px;
+  }
+
+  .stats-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-content p {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .params-grid {
+    gap: 15px;
+  }
+
+  .param-item label {
+    font-size: 0.85em;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.9em;
+  }
+
+  .challenge-char {
+    font-size: 2em;
+  }
+
+  .correctness-feedback {
+    font-size: 1.1em;
+  }
+
+  .morse-display {
+    font-size: 1em;
+    letter-spacing: 2px;
+  }
+
+  .text-display {
+    word-break: break-word;
+  }
+
+  .footer {
+    padding: 15px 10px;
+    font-size: 0.85em;
+  }
+}
+
+/* 超小手機 (< 320px) */
+@media (max-width: 320px) {
+  .header h1 {
+    font-size: 1.2em;
+  }
+
+  .header .subtitle {
+    font-size: 0.8em;
+  }
+
+  .tabs {
+    gap: 0;
+  }
+
+  .tab-btn {
+    padding: 12px 10px;
+    font-size: 0.85em;
+  }
+
+  .main-content {
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .input-area {
+    padding: 25px 10px;
+  }
+
+  .stats-content {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .challenge-char {
+    font-size: 1.5em;
+  }
+}
+
+/* 橫向模式 (小高度) */
+@media (max-height: 600px) {
+  .header {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+  }
+
+  .header .subtitle {
+    font-size: 0.9em;
+  }
+
+  .main-content {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .input-area {
+    padding: 20px 15px;
+  }
+
+  .params-section {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+}
+
+/* 觸控友善 - 增大按鈕尺寸 */
+@media (hover: none) and (pointer: coarse) {
+  .param-input::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+  }
+
+  .param-input::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+  }
+
+  .btn {
+    padding: 14px 28px;
+    font-size: 1.05em;
+  }
+
+  .tab-btn {
+    padding: 18px 20px;
+  }
+
+  input[type='checkbox'] {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+/* 高解析度螢幕 (>= 2x) */
+@media (min-device-pixel-ratio: 2) {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* 暗色模式 (可選) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  }
+
+  .container {
+    background: #0f3460;
+    color: #e0e0e0;
+  }
+
+  .header {
+    color: white;
+  }
+
+  .tabs {
+    background: #1a1a2e;
+    border-bottom-color: #16213e;
+  }
+
+  .tab-btn {
+    color: #999;
+  }
+
+  .tab-btn:hover {
+    background: #16213e;
+    color: #e0e0e0;
+  }
+
+  .tab-btn.active {
+    color: #667eea;
+  }
+
+  .input-area {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
+    color: #666;
+  }
+
+  .display-content {
+    background: #1a1a2e;
+    border-color: #16213e;
+    color: #e0e0e0;
+  }
+
+  .morse-display {
+    color: #64b5f6;
+  }
+
+  .footer {
+    background: #1a1a2e;
+    border-top-color: #16213e;
+    color: #666;
+  }
+}
